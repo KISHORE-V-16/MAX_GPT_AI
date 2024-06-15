@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "predeploy":"npm run build",
-    "delpoy":"gh-pages -d build",
+    "deploy":"gh-pages -d build",
     "preinstall": "npx npm-force-resolutions",
     "dev": "vite",
     "build": "vite build",
