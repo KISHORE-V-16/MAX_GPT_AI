@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+
+.loginButton{
+    animation: welcome 1s ease-in-out infinite alternate;
+  }
+  
+  @keyframes welcome {
+    from {
+      box-shadow: 0 0 10px #84d5eb, 0 0 20px #42eaf0, 0 0 30px #3fffd5,
+        0 0 60px #18d5ff, 0 0 50px #1298ff, 0 0 60px #0e8aff, 0 0 70px #0051ff;
+    }
+  }
