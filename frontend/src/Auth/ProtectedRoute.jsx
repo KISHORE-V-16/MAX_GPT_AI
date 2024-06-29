@@ -33,7 +33,6 @@ const ProtectedRoute = ({ children }) => {
 
 useEffect(()=>{
 
-
   const intervalId = setInterval(() => {
     if (isAuthenticated==false) {
       clearInterval(intervalId);

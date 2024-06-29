@@ -20,7 +20,6 @@ import AlanAi from '../Component/AlanAi';
 import axios from 'axios';
 import HistoryContent from '../Component/HistoryContent';
 import TextScramble from '../Component/TextScramble';
-import NotAuthorized from '../Component/NotAuthorized';
 
 const Home_Page = () => {
 
@@ -37,7 +36,7 @@ const Home_Page = () => {
     const [content,set_content] = useState([]);
     const [apply,setapply] = useState(true);
     const [imgurl,setimgurl] = useState('');
-    const [historycnt,sethistorycnt] = useState([]);
+    const [historycnt,sethistorycnt] = useState(["null"]);
     const [showback,setshowback] = useState(false);
     const [tempcontent,settempcontent] = useState([]);
   
@@ -194,32 +193,6 @@ const Home_Page = () => {
     }
   }
   
-  const Code_Generator = async (searchdata) =>{
-  
-    if(searchdata){
-  
-    await fetch(SERVER_IP+'/request/code_generator',{
-      method: 'POST',
-      headers: {
-        'Accept':'application/json',
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify({"extract_data":`${searchdata}`})
-      }).then(response => response.json())
-      .then((res_data)=>{
-        if(res_data)
-        {
-          toast.success("Query generated Successfully ...",toaststyles);
-          setcode_txt(res_data.google.generated_text);
-        }
-        else{
-          toast.error("THERE IS SOME ERROR HAVE BEEN GENERATED TRY TO DO LATER.",toaststyles);
-        }
-      })
-  
-  }
-  }
-  
   const AI_Content_Detector = async (searchdata) =>{
   
     if(searchdata){
@@ -349,7 +322,7 @@ const Home_Page = () => {
         "token": `${url}`,
       }});
      
-      sethistorycnt(response.data.historycnt);
+      sethistorycnt(response.data.historycnt ? response.data.historycnt : "null");
 
     } catch (error) {
       console.error('Error fetching data', error);
