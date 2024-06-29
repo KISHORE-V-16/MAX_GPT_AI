@@ -291,18 +291,23 @@ const Home_Page = () => {
             answer:[],
             type:selectedValues,
         };
+        console.log(temp);
       localStorage.setItem('type',selectedValues.length);
         selectedValues.map((val)=>{
           if(val== "Text-Search"){
+            console.log("done t");
             Text_Generator(text_msg);
           }
           else if(val== "Image-Search"){
+          console.log("done i");
             Image_Generator(text_msg);
           }
           else if(val == "Text-to-Voice"){
+          console.log("done text");
             Video_generator(text_msg);
           }
           else if(val== "Plagarism-Detector"){
+            console.log("done p");
             AI_Content_Detector(text_msg);
           }
         })
@@ -502,7 +507,7 @@ useEffect(() => {
     className: "custom-toast",
     transitions:Bounce
   }
-  
+ 
   const logOut = () =>
     {
       localStorage.removeItem('token'+`${useremail}`);

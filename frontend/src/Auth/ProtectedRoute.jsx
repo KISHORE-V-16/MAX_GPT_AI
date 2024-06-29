@@ -41,7 +41,7 @@ useEffect(()=>{
     } else if(isAuthenticated==true && localStorage.getItem('token'+`${useremail}`)){
       Authenticator(localStorage.getItem('token'+`${useremail}`));
     }
-  }, 3000);
+  }, 900000);
 
 },[isAuthenticated]);
 
