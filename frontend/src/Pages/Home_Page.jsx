@@ -321,9 +321,13 @@ const Home_Page = () => {
         "Content-Type": "application/json",
         "token": `${url}`,
       }});
-     
-      sethistorycnt(response.data.historycnt ? response.data.historycnt : "null");
-
+      console.log(response.data.success);
+     if(response.data.success == false){
+      sethistorycnt(["null"]);
+      }else{
+        sethistorycnt(response.data.historycnt);
+      }
+      console.log(response.data.success);
     } catch (error) {
       console.error('Error fetching data', error);
     }

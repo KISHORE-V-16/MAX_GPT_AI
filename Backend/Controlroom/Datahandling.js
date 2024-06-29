@@ -50,7 +50,12 @@ const get_data = async(req,res) =>{
     const {email} = req.body;
     try {
         const data = await UserDataModel.find({email});
+        if(!data[0]){
+            res.json({success:false,historycnt:[]});   
+        }
+        else{
         res.json({success:true,historycnt:data});
+        }
     } catch (err) {
         res.status(500).json({success:false, message:err.message });
     }

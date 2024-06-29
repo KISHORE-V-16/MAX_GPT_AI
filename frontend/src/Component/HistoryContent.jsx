@@ -57,7 +57,12 @@ const HistoryContent = ({historycnt,setcnt,setshowback,sethistorycnt}) => {
         "Content-Type": "application/json",
         "token": `${url}`,
       }});
-      sethistorycnt(response.data.historycnt!=undefined ? response.data.historycnt : ["null"]);
+      console.log(response.data.success);
+      if(response.data.success == false){
+        sethistorycnt(["null"]);
+        }else{
+          sethistorycnt(response.data.historycnt);
+        }
       
     } catch (error) {
       console.error('Error fetching data', error);
@@ -68,7 +73,7 @@ const HistoryContent = ({historycnt,setcnt,setshowback,sethistorycnt}) => {
     <div className='flex flex-col gap-[10px] justify-start items-center'>
         <h3 className='text-[23px] ml-[10px] mt-[10px] font-extrabold text-transparent  bg-clip-text bg-gradient-to-r from-blue-200 to-blue-600 '>History </h3>
         {
-            (historycnt[0]!="null") ? (<div className="text-[14px] font-extrabold text-gray-200 ">No Content has been Saved ...</div>) : ( <div className="sub-history overflow-y-visible flex flex-col gap-[0.5rem] items-center ">
+            (historycnt[0]==="null") ? (<div className="text-[14px] font-extrabold text-gray-200 ">No Content has been Saved ...</div>) : ( <div className="sub-history overflow-y-visible flex flex-col gap-[0.5rem] items-center ">
                 {
                     historycnt.map((userdata)=>{
                         return (
